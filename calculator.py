@@ -27,7 +27,7 @@ class GUI:
                 btn.grid(row=i+1,column=j,padx=5,pady=5)
 
         self.entry.bind("<Return>",lambda event:self.calculate())
-        self.entry.bind("<Shift_L>",lambda event:self.clean())
+        self.entry.bind("<Alt_L>",lambda event:self.clean())
         self.entry.bind("<Shift_R>",lambda event:self.abs())
 
     def add_to_entry(self,text):
@@ -66,3 +66,4 @@ class GUI:
 if __name__=="__main__":
     a=GUI()
     a.root.mainloop()
+
