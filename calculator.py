@@ -4,12 +4,12 @@ class GUI:
     def __init__(self):
         self.root=tk.Tk()
         self.root.title("Calculator")
-        self.root.geometry("490x590")
+        self.root.geometry("370x450")
         self.interface()
 
     #创建按钮、输入框、捆绑按键
     def interface(self):
-        self.entry=tk.Entry(self.root,width=60,font=('Arial',11))
+        self.entry=tk.Entry(self.root,width=45,font=('Arial',11))
         self.entry.grid(row=0,column=0,columnspan=4,ipady=10)
         
         button=[
@@ -23,7 +23,7 @@ class GUI:
         for i in range(len(button)):
             for j in range(len(button[i])):
                 text=button[i][j]
-                btn=tk.Button(self.root,text=text,width=8,height=3,font=("Arial",16),command=lambda t=text:self.add_to_entry(t))
+                btn=tk.Button(self.root,text=text,width=8,height=3,font=("Arial",12),command=lambda t=text:self.add_to_entry(t))
                 btn.grid(row=i+1,column=j,padx=5,pady=5)
 
         self.entry.bind("<Return>",lambda event:self.calculate())
@@ -44,26 +44,29 @@ class GUI:
 
     #计算
     def calculate(self,event=None):
-        cal=self.entry.get()
-        self.entry.delete(0,tk.END)
-        self.entry.insert(0,eval(cal))
+        try:
+            cal=self.entry.get()
+            self.entry.delete(0,tk.END)
+            self.entry.insert(0,eval(cal))
+        except:
+            self.entry.delete(0,tk.END)
+            self.entry.insert(0,"输入错误！")
 
     #清空输入框
     def clean(self):
-        self.entry.delete(0,tk.END)
+            self.entry.delete(0,tk.END)
 
     #绝对值
     def abs(self):
-        cal=self.entry.get()
-        self.entry.delete(0,tk.END)
-        self.entry.insert(0,abs(eval(cal)))
+            cal=self.entry.get()
+            self.entry.delete(0,tk.END)
+            self.entry.insert(0,abs(eval(cal)))
 
     def back(self):
-        cal=self.entry.get()
-        self.entry.delete(0,tk.END)
-        self.entry.insert(0,cal[:-1])
+            cal=self.entry.get()
+            self.entry.delete(0,tk.END)
+            self.entry.insert(0,cal[:-1])     
 
 if __name__=="__main__":
     a=GUI()
     a.root.mainloop()
-
