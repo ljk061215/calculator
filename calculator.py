@@ -9,7 +9,7 @@ class GUI:
 
     #创建按钮、输入框、捆绑按键
     def interface(self):
-        self.entry=tk.Entry(self.root,width=45,font=('Arial',11))
+        self.entry=tk.Entry(self.root,width=40,font=('Arial',13))
         self.entry.grid(row=0,column=0,columnspan=4,ipady=10)
         
         button=[
@@ -70,3 +70,4 @@ class GUI:
 if __name__=="__main__":
     a=GUI()
     a.root.mainloop()
+
